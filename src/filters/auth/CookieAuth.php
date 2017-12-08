@@ -1,5 +1,8 @@
 <?php
 namespace  macfly\yii\filters\auth;
+
+use yii\filters\auth\AuthMethod;
+
 /**
  * CookieAuth is an action filter that supports the cookie authentication method.
  *

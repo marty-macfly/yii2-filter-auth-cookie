@@ -6,7 +6,7 @@
     "homepage": "https://github.com/marty-macfly/yii2-filter-auth-cookie",
     "minimum-stability": "stable",
     "require": {
-        "yiisoft/yii2": "~2.0.13"
+        "yiisoft/yii2": "~2.0.0"
     },
     "license": "BSD-3-Clause",
     "authors": [

@@ -1,0 +1,23 @@
+{
+    "name": "macfly/yii2-filter-auth-cookie",
+    "description": "CookieAuth is an action filter that supports the cookie based authentication method.",
+    "type": "yii2-filter",
+    "keywords": ["yii2", "filter", "auth"],
+    "homepage": "https://github.com/marty-macfly/yii2-filter-auth-cookie",
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.13"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Charles DELFLY",
+            "email": "charles@delfly.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "macfly\\yii\\": "src/"
+        }
+    }
+}

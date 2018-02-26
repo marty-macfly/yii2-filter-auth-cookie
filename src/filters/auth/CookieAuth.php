@@ -1,6 +1,7 @@
 <?php
 namespace  macfly\yii\filters\auth;
 
+use Yii;
 use yii\filters\auth\AuthMethod;
 
 /**
@@ -36,17 +37,24 @@ class CookieAuth extends AuthMethod
      */
     public function authenticate($user, $request, $response)
     {
-        $accessToken = $request->cookies->getValue($this->cookieName);
+        if ($request->cookies->has($this->cookieName)) {
+            $accessToken = $request->cookies->getValue($this->cookieName);
+            Yii::debug(sprintf("Cookie %s found value: %s", $this->cookieName, $accessToken));
 
-        if (is_string($accessToken)) {
-            $identity = $user->loginByAccessToken($accessToken, get_class($this));
-            if ($identity !== null) {
-                return $identity;
+            if (is_string($accessToken)) {
+                $identity = $user->loginByAccessToken($accessToken, get_class($this));
+                if ($identity !== null) {
+                    return $identity;
+                } else {
+                    Yii::info(sprintf("Token found in cookie %s with value %s is not valid", $this->cookieName, $accessToken));
+                }
             }
-        }
 
-        if ($accessToken !== null) {
-            $this->handleFailure($response);
+            if ($accessToken !== null) {
+                $this->handleFailure($response);
+            }
+        } else {
+            Yii::debug(sprintf("No cookie named %s found", $this->cookieName));
         }
 
         return null;
